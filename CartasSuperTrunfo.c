@@ -158,3 +158,98 @@ int main() {
 
     return 0;
 }
+
+🏆 Nível Mestre
+
+#include <stdio.h>
+#include <string.h>
+
+// Definindo a estrutura da carta
+typedef struct {
+    char nome[50];
+    double densidade_populacional;
+    double area_territorial;
+    double pib;
+    double super_poder; // Soma de todas as propriedades
+} Carta;
+
+// Função para calcular o Super Poder
+double calcular_super_poder(Carta *carta) {
+    return carta->densidade_populacional + carta->area_territorial + carta->pib;
+}
+
+// Função para comparar as cartas
+void comparar_cartas(Carta carta1, Carta carta2) {
+    printf("\n--- Comparação entre %s e %s ---\n", carta1.nome, carta2.nome);
+
+    // Comparando Densidade Populacional
+    printf("Densidade Populacional: ");
+    if (carta1.densidade_populacional < carta2.densidade_populacional) {
+        printf("%s venceu!\n", carta1.nome);
+    } else if (carta1.densidade_populacional > carta2.densidade_populacional) {
+        printf("%s venceu!\n", carta2.nome);
+    } else {
+        printf("Empate!\n");
+    }
+
+    // Comparando Área Territorial
+    printf("Área Territorial: ");
+    if (carta1.area_territorial > carta2.area_territorial) {
+        printf("%s venceu!\n", carta1.nome);
+    } else if (carta1.area_territorial < carta2.area_territorial) {
+        printf("%s venceu!\n", carta2.nome);
+    } else {
+        printf("Empate!\n");
+    }
+
+    // Comparando PIB
+    printf("PIB: ");
+    if (carta1.pib > carta2.pib) {
+        printf("%s venceu!\n", carta1.nome);
+    } else if (carta1.pib < carta2.pib) {
+        printf("%s venceu!\n", carta2.nome);
+    } else {
+        printf("Empate!\n");
+    }
+
+    // Comparando Super Poder
+    printf("Super Poder: ");
+    if (carta1.super_poder > carta2.super_poder) {
+        printf("%s venceu!\n", carta1.nome);
+    } else if (carta1.super_poder < carta2.super_poder) {
+        printf("%s venceu!\n", carta2.nome);
+    } else {
+        printf("Empate!\n");
+    }
+}
+
+int main() {
+    Carta carta1, carta2;
+
+    // Entrada de dados para a primeira carta
+    printf("Insira o nome da primeira carta: ");
+    scanf("%s", carta1.nome);
+    printf("Densidade Populacional: ");
+    scanf("%lf", &carta1.densidade_populacional);
+    printf("Área Territorial: ");
+    scanf("%lf", &carta1.area_territorial);
+    printf("PIB: ");
+    scanf("%lf", &carta1.pib);
+    carta1.super_poder = calcular_super_poder(&carta1);
+
+    // Entrada de dados para a segunda carta
+    printf("\nInsira o nome da segunda carta: ");
+    scanf("%s", carta2.nome);
+    printf("Densidade Populacional: ");
+    scanf("%lf", &carta2.densidade_populacional);
+    printf("Área Territorial: ");
+    scanf("%lf", &carta2.area_territorial);
+    printf("PIB: ");
+    scanf("%lf", &carta2.pib);
+    carta2.super_poder = calcular_super_poder(&carta2);
+
+    // Comparar as cartas
+    comparar_cartas(carta1, carta2);
+
+    return 0;
+}
